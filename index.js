@@ -9,7 +9,7 @@ async function runServer() {
     server.use(bodyParser.json());
 
     //Middleware between endpoints and routes
-    server.get("", (req, res) => res.send("Welcome to Cryptomania"));
+    server.get("/", (req, res) => res.send("Welcome to Cryptomania"));
     server.use("/api/v1/cmc", require("./routes/coinmarketcap"));
     server.use("/api/v1/coinmarketcal", require("./routes/coinmarketcal"));
     server.use("/api/v1/coingecko", require("./routes/coingecko"));

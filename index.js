@@ -17,7 +17,7 @@ async function runServer() {
     server.use("/api/v1/coindar", require("./routes/coindar"));
 
     const PORT = process.env.DEFAULT_PORT || 3000;
-    server.listen(PORT, (err) => {
+    server.listen(PORT, "0.0.0.0", (err) => {
         if (err) console.error(err);
         console.log("Server ready on port:", PORT);
     });

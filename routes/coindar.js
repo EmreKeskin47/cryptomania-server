@@ -16,12 +16,6 @@ router.get("/categories", (req, res) => {
         `${BASE_URL}/tags?access_token=${COINDAR_TOKEN}`,
         function (error, body) {
             if (error) throw new Error(error);
-            console.log(
-                "coindar token",
-                COINDAR_TOKEN,
-                "coindar url",
-                BASE_URL
-            );
             res.send(body.body);
         }
     );

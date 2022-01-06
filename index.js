@@ -15,6 +15,9 @@ async function runServer() {
     server.use("/api/v1/coingecko", require("./routes/coingecko"));
     server.use("/api/v1/feargreed", require("./routes/feargreed"));
     server.use("/api/v1/coindar", require("./routes/coindar"));
+    server.use("/api/v1/whalealert", require("./routes/whalealert"));
+    server.use("/api/v1/binance", require("./routes/binance"));
+    server.use("/api/v1/finnhub", require("./routes/finnhub"));
 
     server
         .get("/", (req, res) => res.send("Welcome to Cryptomania"))

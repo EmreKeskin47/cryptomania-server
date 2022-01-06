@@ -15,7 +15,6 @@ var options = {
     },
 };
 
-//get method for api/v1/coingecko/dominance returns dominance of top ten coins
 router.get("/", (req, res) => {
     request(options, (err, body) => {
         if (err) {

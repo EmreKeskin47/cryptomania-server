@@ -29,7 +29,7 @@ router.get("/events/:page/:sort", (req, res) => {
     let page = req.params.page;
     let sort = req.params.sort;
     request(
-        `${BASE_URL}/events?access_token=${COINDAR_TOKEN}&page=${page}&page_size=99&filter_tags=1,5,9,10,11,14,17,19,20,21,22&filter_date_start=${year}-${month}-${day}&sort_by=${sort}`,
+        `${BASE_URL}/events?access_token=${COINDAR_TOKEN}&page=${page}&page_size=99&filter_tags=1,3,5,6,9,10,11,14,15,16,17,19,20,21,22&filter_date_start=${year}-${month}-${day}&sort_by=${sort}`,
         function (error, body) {
             if (error) throw new Error(error);
             res.send(body.body);

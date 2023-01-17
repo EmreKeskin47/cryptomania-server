@@ -8,9 +8,17 @@ const key = process.env.WHALE_ALERT_KEY;
 
 //1 Jan 2022 = 1640988000
 //get whale transactions
-router.get("/", (req, res) => {
+router.get("/:min/:start", (req, res) => {
+    let min = req.params.min;
+    let start = req.params.start;
+
+    let date = new Date();
+    date.setMinutes(date.getMinutes() - start);
+    let unixTime = Date.parse(date);
     request(
-        `${url}/transactions?api_key=${key}&min_value=50000000`,
+        `${url}/transactions?api_key=${key}&min_value=${min}&start=${
+            unixTime / 1000
+        }`,
         (response, err, body) => {
             if (err) {
                 return res.send(err.body);
@@ -21,20 +29,20 @@ router.get("/", (req, res) => {
 });
 
 //get recent whale transactions occured in last 10 minutes
-router.get("/recent", (req, res) => {
-    let date = new Date();
-    date.setMinutes(date.getMinutes() - 10);
-    let unixTime = Date.parse(date);
-    request(
-        `${url}/transactions?api_key=${key}&start=${unixTime / 1000}`,
-        (response, err, body) => {
-            if (err) {
-                return res.send(err.body);
-            }
-            res.send(body);
-        }
-    );
-});
+// router.get("/recent", (req, res) => {
+//     let date = new Date();
+//     date.setMinutes(date.getMinutes() - 10);
+//     let unixTime = Date.parse(date);
+//     request(
+//         `${url}/transactions?api_key=${key}&start=${unixTime / 1000}`,
+//         (response, err, body) => {
+//             if (err) {
+//                 return res.send(err.body);
+//             }
+//             res.send(body);
+//         }
+//     );
+// });
 
 //1641136833000
 //1641137159

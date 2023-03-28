@@ -10,9 +10,8 @@ const finnhubClient = new finnhub.DefaultApi();
 
 router.get("/:symbol", (req, response) => {
     let symbol = req.params.symbol.toUpperCase();
-    let today = new Date();
-    let prev = new Date();
-    prev.setHours(prev.getHours() - 336);
+    let today = new Date(Date.now());
+    let prev = new Date(Date.now() - 12096e5);
     let todayUnix = Date.parse(today) / 1000;
     let prevUnix = Date.parse(prev) / 1000;
 
@@ -24,6 +23,7 @@ router.get("/:symbol", (req, response) => {
         "rsi",
         {},
         (error, data, res) => {
+            console.log(data);
             response.send(data);
         }
     );

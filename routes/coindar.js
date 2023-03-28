@@ -43,15 +43,17 @@ router.get("/coin", (req, res) => {
         let res = checkIfExistsInBinanceGate(coindarCoinList[i].symbol);
         if ((res && res.gate === true) || (res && res.binance === true)) {
             data.push({ ...coindarCoinList[i], ...res });
-            console.log(data);
         }
     }
     res.send(data);
 
-    // request(`${BASE_URL}/coins?access_token=${token}`, function (error, body) {
-    //     if (error) throw new Error(error);
-    //     res.send(body.body);
-    // });
+    // request(
+    //     `${BASE_URL}/coins?access_token=${COINDAR_TOKEN}`,
+    //     function (error, body) {
+    //         if (error) throw new Error(error);
+    //         res.send(body.body);
+    //     }
+    // );
 });
 
 module.exports = router;

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 var request = require("request");
 const { writeToBinance, writeToGate } = require("../helpers/MarketPairCheck");
+const axios = require("axios");
 
 //get method for api/v1/coingecko/dominance returns dominance of top ten coins
 router.get("/dominance", (req, res) => {
